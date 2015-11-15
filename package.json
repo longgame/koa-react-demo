@@ -1,0 +1,31 @@
+{
+  "name": "ncaa-controller",
+  "version": "1.0.0",
+  "description": "Download NCAA statistics to a local database.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node --harmony server.js",
+    "test": "NODE_ENV=test mocha --harmony test/test-*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jjduhamel/ncaa-controller.git"
+  },
+  "author": "John Duhamel",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jjduhamel/ncaa-controller/issues"
+  },
+  "homepage": "https://github.com/jjduhamel/ncaa-controller#readme",
+  "dependencies": {
+    "co": "^4.6.0",
+    "dotenv": "^1.2.0",
+    "koa": "^1.1.2",
+    "koa-router": "^5.2.3",
+    "lodash": "^3.10.1",
+    "sequelize": "^3.13.0"
+  },
+  "devDependencies": {
+    "chai": "^3.4.1"
+  }
+}

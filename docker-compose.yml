@@ -1,0 +1,16 @@
+web:
+  build: 'support/dockerfiles/webapp'
+  ports:
+    - '3000:3000'
+  volumes:
+    - .:/app
+  environment:
+    - NODE_ENV=development
+    - DEBUG=verbose
+  links:
+    - db
+db:
+  build: 'support/dockerfiles/postgres'
+  environment:
+    - POSTGRES_USER=postgres
+    - POSTGRES_PASSWORD=password
