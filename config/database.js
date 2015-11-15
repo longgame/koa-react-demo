@@ -4,7 +4,7 @@ require('dotenv').load();
 
 module.exports = {
   development: {
-    host: '172.17.0.13',
+    host: 'db',
     database: 'data_dev',
     username: 'postgres',
     password: 'password',
@@ -12,7 +12,7 @@ module.exports = {
     logging: true,
   },
   test: {
-    host: 'tcp://db:5432',
+    host: 'db',
     database: 'data_test',
     username: 'postges',
     password: 'password',
