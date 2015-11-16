@@ -19,7 +19,7 @@ var app = module.exports = koa();
 app.use(views.middleware);
 app.use(router.routes());
 
-app.use(serve('./build'));
+app.use(serve('./dist'));
 app.use(serve('./public'));
 
 // Print how long each page load takes
@@ -36,7 +36,7 @@ app.use(function *(next) {
 
 if (!module.parent) {
   app.listen(config.app.port);
-  console.log('Listening on %s:%s',
+  debug('Listening on %s:%s',
     config.app.host,
     config.app.port);
 }

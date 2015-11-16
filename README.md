@@ -34,12 +34,7 @@ $ cp env.local .env
 You need to build the frontend before you deploy.
 ```bash
 $ bower install
-$ gulp build                # <-- Do this whenever you want to see changes on the frontend
-```
-
-We've added a few extra tools, such as live reloading, to the gulp dev task.
-```bash
-$ gulp dev
+$ webpack
 ```
 
 **Run the Server**
@@ -75,7 +70,7 @@ $ docker exec koa_web_1 touch server.js
 
 To view changes on the frontend, you just need to recreate the build directory.
 ```bash
-$ gulp build
+$ webpack
 ```
 
 ## Development
