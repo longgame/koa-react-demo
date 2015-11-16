@@ -8,7 +8,7 @@ class Hello extends React.Component {
 
 class World extends React.Component {
   render() {
-    return <h2>World</h2>
+    return <h2>Gulp</h2>
   }
 }
 

@@ -4,7 +4,7 @@ Quickly bootstrap a KoaJS application.
 
 ## Setup
 
-**Install Components**
+**Install Host Dependencies**
 
 The development toolchain is based on docker.
 * [docker](http://docs.docker.com/engine/installation/)
@@ -29,21 +29,21 @@ $ cp env.local .env
 * [Facebook Developers](https://developers.facebook.com/products/ads/?)
 * [Google Developers](https://developers.google.com/)
 
-**Build the Frontend**
+**Build Components**
 
-You need to build the frontend before you deploy.
-```bash
-$ bower install
-$ webpack
-```
+You need to run through all of these steps at least once to run the app.  Periodically, you may need to repeat steps in this section.
 
-**Run the Server**
+* Install node dependencies.
+* Build infrastructure.
+* Build the frontend.
 
-Before you run the app the first time, you should the images used in testing.  You'll need to run this periodically when the infrastructure changes.  As a rule of thumb, you should run this whenever you merge code.
 ```bash
 $ npm install
 $ docker-compose build
+$ gulp build
 ```
+
+**Run the Server**
 
 Now you're ready to start the app.
 ```bash
@@ -57,39 +57,56 @@ Now, you should be able to view the app by visiting http://localhost:3000 in you
 $ docker exec koa_web_1 npm install --force bcrypt
 ```
 
-## Reloading
+## Development
 
-**backend**
+**Reload Changes**
 
-When you make changes on the backend that you want to make active.
+_Frontend_
+
+We provide a local development server with live-reloading for frontend development.  This runs outside of docker and is available at http://localhost:9000.
+```bash
+$ gulp dev
+```
+
+Alternatively, you can rebuild the frontend to push changes to the docker server.
+```bash
+$ gulp build
+```
+
+_Backend_
+
+In development, the backend is running on nodemon.
 ```bash
 $ docker exec koa_web_1 touch server.js
 ```
 
-**frontend**
-
-To view changes on the frontend, you just need to recreate the build directory.
-```bash
-$ webpack
-```
-
-## Development
-
 **Database Migrations**
 
-If you want to make any model changes, first create a new migration using [sequelize-cli](https://github.com/sequelize/cli).
+This project uses [sequelize-cli](https://github.com/sequelize/cli) for database migrations.
+
+_Create a new model and migration_
+
 ```bash
-$ sequelize migration:create
+$ sequelize model:create --name=<title> --attributes="<attr>:<type>, <attr>:<type>"
 ```
 
-If you want to add some seed data.
+_Create a database seed_
+
 ```bash
 $ sequelize seed:create --name=<title>
 ```
 
-When you're satisfied with your changes and want to go live.
+_Run outstanding migrations_
+
 ```bash
 $ docker exec koa_web_1 sequelize db:migrate
+```
+
+_Undo last migration_
+
+This is useful if you want to make changes to a migration.
+```bash
+$ docker exec koa_web_1 sequelize db:migrate:undo
 ```
 
 ## Testing

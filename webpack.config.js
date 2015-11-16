@@ -4,7 +4,9 @@ var path = require('path'),
     webpack = require('webpack');
 
 module.exports = {
-  entry: path.resolve(__dirname, 'app/js/main.js'),
+  entry: {
+    app: [ path.resolve(__dirname, 'app/js/main.js') ]
+  },
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js'
@@ -17,5 +19,17 @@ module.exports = {
         loader: 'babel',
       }
     ]
-  }
+  },
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+  ],
+  devServer: {
+    host: 'localhost',
+    port: 9000,
+    hot: true,
+    inline: true,
+    progress: true,
+    stats: {
+    },
+  },
 };
