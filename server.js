@@ -1,26 +1,32 @@
 'use strict;'
 
 var _ = require('lodash'),
+    path = require('path'),
     koa = require('koa'),
     Jade = require('koa-jade'),
-    serve = require('koa-static'),
-    debug = require('debug')('verbose');
+    serve = require('koa-static');
 
 var config = require('./config/config'),
     router = require('./config/routes'),
     models = require('./src/models'),
-    views = new Jade({
-      viewPath: './src/views',
-      helperPath: './src/helpers',
-    });
+    views = require('koa-views')(
+      path.join(__dirname, 'src/views'), {
+        default: 'html',
+        map: {
+          jade: 'jade',
+        },
+      }
+    );
+
+var debug = require('debug')(config.app.name);
 
 var app = module.exports = koa();
 
-app.use(views.middleware);
+app.use(views);
 app.use(router.routes());
 
-app.use(serve('./dist'));
 app.use(serve('./public'));
+app.use(serve('./dist'));
 
 // Print how long each page load takes
 app.use(function *(next) {

@@ -6,7 +6,7 @@ web:
     - .:/app
   environment:
     - NODE_ENV=development
-    - DEBUG=verbose
+    - DEBUG=koa-demo
   links:
     - db
 db:

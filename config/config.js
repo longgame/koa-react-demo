@@ -9,6 +9,7 @@ var env = process.env.NODE_ENV || 'development';
 module.exports = {
   env: process.env.NODE_ENV || 'development',
   app: {
+    name: 'koa-demo',
     host: process.env.HOST_URL || 'http://localhost',
     port: {
       'development': 3000,
