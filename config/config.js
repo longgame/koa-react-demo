@@ -17,7 +17,7 @@ module.exports = {
       'production': 80,
     } [env],
   },
-  database: require('./database.js')[env],
+  database: require('./database')[env],
   redis: {
     host: process.env.REDIS_URL,
   },

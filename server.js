@@ -22,6 +22,10 @@ var debug = require('debug')(config.app.name);
 
 var app = module.exports = koa();
 
+app.models = models;
+
+var passport = require('./config/passport')(app);
+
 app.use(views);
 app.use(router.routes());
 
