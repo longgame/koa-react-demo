@@ -21,11 +21,13 @@ var debug = require('debug')(settings.app.name);
 
 // App
 var koa = require('koa');
-var app = module.exports = koa();
+var app = koa();
+module.exports = app;
+module.exports.database = models.sequelize;
 
 // Sessions
 var session = require('koa-generic-session');
-app.keys = ['session-secret'];
+app.keys = ['session-secret'];                      // FIXME
 app.use(session());
 
 // Authentication

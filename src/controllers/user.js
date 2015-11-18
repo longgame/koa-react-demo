@@ -8,12 +8,6 @@ module.exports = function(Models) {
   var User = Models.user;
 
   return {
-    show: function *() {
-    },
-
-    update: function *() {
-    },
-
     registerStep1: function *() {
       yield this.render('registration.jade');
     },
@@ -50,8 +44,24 @@ module.exports = function(Models) {
       this.redirect('/success');
     },
 
+    show: function *() {
+      // FIXME
+    },
+
     profile: function *() {
       this.body = this.req.user.profile();
-    }
+    },
+
+    update: function *() {
+      // FIXME
+    },
+
+    update_email: function *() {
+      // FIXME
+    },
+
+    update_password: function *() {
+      // FIXME
+    },
   };
 };

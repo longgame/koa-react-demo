@@ -1,16 +1,15 @@
 'use strict;'
 
 var app = require('../server'),
-    request = require('co-supertest')(app.listen()),
+    request = require('co-supertest').agent(app.listen()),
     chai = require('chai'),
     assert = chai.assert,
     expect = chai.expect,
     should = chai.should();
 
-describe('index', function() {
-  before(function *() {
-  });
+require('co-mocha');
 
+describe('Index', function() {
   it('GET / renders a page', function *() {
     var res = yield request.get('/')
                       .expect(200)

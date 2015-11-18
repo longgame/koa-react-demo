@@ -14,9 +14,10 @@ module.exports = {
   test: {
     host: 'db',
     database: 'data_test',
-    username: 'postges',
+    username: 'postgres',
     password: 'password',
     dialect: 'postgres',
+    logging: false,
   },
   production: {
     host: process.env.DB_URL,
@@ -24,5 +25,6 @@ module.exports = {
     username: process.env.DB_USERNAME,
     password: process.env.DB_PASSWORD,
     dialect: 'postgres',
+    logging: false,
   }
 };

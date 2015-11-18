@@ -26,6 +26,9 @@ module.exports = function(User) {
       var user = yield User.findOne({
         where: { email: email }
       });
+      if (user === null) {
+        done(null, false);
+      }
 
       if (bcrypt.compareSync(password, user.password)) {
         done(null, user);
