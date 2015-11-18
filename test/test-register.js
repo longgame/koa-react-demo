@@ -9,7 +9,7 @@ var helpers = require('./helpers'),
 
 require('co-mocha');
 
-describe('User Registration', function() {
+describe('Registration', function() {
   beforeEach(function *() {
     yield helpers.database.sync({force: true});
   });

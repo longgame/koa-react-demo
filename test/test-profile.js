@@ -9,14 +9,14 @@ var helpers = require('./helpers'),
 
 require('co-mocha');
 
-describe('/profile', function() {
+describe('Profile', function() {
   beforeEach(function *() {
     yield helpers.database.sync({force: true});
     yield helpers.registerTestUser();
     yield helpers.loginTestUser();
   });
 
-  it ('GET shows the user profile', function *() {
+  it ('GET /profile shows the user profile', function *() {
     var res = yield request.get('/profile/self')
                 .expect(200)
                 .end();
@@ -24,7 +24,12 @@ describe('/profile', function() {
 
   it ('helpers.profile shows the user profile', function *() {
     var res = yield helpers.profile();
-    var auth = yield helpers.isAuthenticated();
-    assert(auth);
+    expect(res.status).to.equal(200);
+  });
+
+  it ('blocks unauthenticated requests', function *() {
+    yield helpers.logout();
+    var res = yield helpers.profile();
+    expect(res.status).to.equal(401);
   });
 });

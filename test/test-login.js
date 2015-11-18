@@ -9,13 +9,13 @@ var helpers = require('./helpers'),
 
 require('co-mocha');
 
-describe('VERB /login', function() {
+describe('Login', function() {
   beforeEach(function *() {
     yield helpers.database.sync({force: true});
     yield helpers.registerTestUser();
   });
   
-  it ('POST authenticates user', function *() {
+  it ('POST /login authenticates user', function *() {
     return yield request.post('/login')
                 .send(helpers.test_user)
                 .expect(302)
@@ -40,7 +40,7 @@ describe('VERB /login', function() {
   });
   */
 
-  it ('POST blocks invalid password', function *() {
+  it ('blocks invalid password', function *() {
     var creds = helpers.test_user;
     creds.password = 'invalid';
 
@@ -51,13 +51,13 @@ describe('VERB /login', function() {
   });
 
   /*
-  it ('POST fails gracefully if password is missing', function *() {
+  it ('fails gracefully if password is missing', function *() {
     var res = yield helpers.login({ email: 'test@example.com' })
     expect(res.status).to.equal(400);
     expect(res.headers.location).to.equal('/error');
   });
 
-  it ('POST fails gracefully if email is missing', function *() {
+  it ('fails gracefully if email is missing', function *() {
     var res = yield helpers.login({ password: 'Test123!' })
     expect(res.status).to.equal(400);
     expect(res.headers.location).to.equal('/error');
