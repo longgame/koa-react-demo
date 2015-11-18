@@ -1,6 +1,8 @@
 'use strict;'
 
-var bcrypt = require('bcrypt');
+var _ = require('lodash'),
+    bcrypt = require('bcrypt');
+    passport = require('koa-passport');
 
 module.exports = function(Models) {
   var User = Models.user;
@@ -8,11 +10,14 @@ module.exports = function(Models) {
   return {
     show: function *() {
     },
+
     update: function *() {
     },
+
     registerStep1: function *() {
       yield this.render('registration.jade');
     },
+
     registerStep2: function *() {
       var params = this.request.body;
 
@@ -27,14 +32,26 @@ module.exports = function(Models) {
 
       user.reload();
 
-      this.body = 'success';
-      /*
       this.req.login(user, function(err) {
-        this.body = 'success';
+        // FIXME: handle error
+        this.redirect('/profile/self');
       }.bind(this));
-      */
     },
+
+    login: function *() {
+      yield passport.authenticate('local', {
+        successRedirect: '/profile/self',
+        failureRedirect: '/error',
+      });
+    },
+
+    logout: function *() {
+      this.logout();
+      this.redirect('/success');
+    },
+
     profile: function *() {
+      this.body = this.req.user.profile();
     }
   };
 };

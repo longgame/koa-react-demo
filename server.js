@@ -1,10 +1,7 @@
 'use strict;'
 
 var _ = require('lodash'),
-    path = require('path'),
-    koa = require('koa'),
-    Jade = require('koa-jade'),
-    serve = require('koa-static');
+    path = require('path');
 
 var models = require('./src/models'),
     controllers = require('./src/controllers')(models),
@@ -22,35 +19,45 @@ var settings = require('./config/config'),
 
 var debug = require('debug')(settings.app.name);
 
+// App
+var koa = require('koa');
 var app = module.exports = koa();
 
-app.use(views);
-app.use(router.routes());
+// Sessions
+var session = require('koa-generic-session');
+app.keys = ['session-secret'];
+app.use(session());
 
 // Authentication
 var passport = require('./config/passport')(models['user']);
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Static files
+// Static content
+var serve = require('koa-static');
 app.use(serve('./public'));
 app.use(serve('./dist'));
+
+// Routes and views
+app.use(views);
+app.use(router.routes());
 
 // Print how long each page load takes
 app.use(function *(next) {
   var start = new Date;
   yield next;
   var end = new Date;
-  debug('[%s] %s %s - %s ms',
+
+  console.log('[%s] %s %s - %s ms',
     this.status,
     this.method,
     this.url,
-    end-start);
+    (end-start));
 });
 
 if (!module.parent) {
   app.listen(settings.app.port);
-  debug('Listening on %s:%s',
+  console.log('Listening on %s:%s',
     settings.app.host,
     settings.app.port);
 }

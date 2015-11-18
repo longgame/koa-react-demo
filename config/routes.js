@@ -1,8 +1,17 @@
 'use strict;'
 
 var Router = require('koa-router'),
-    bodyParser = require('koa-body')(),
-    passport = require('koa-passport');
+    koaBody = require('koa-body');
+
+var bodyParser = koaBody();
+
+var requireAuth = function *(next) {
+  if (this.req.isAuthenticated()) {
+    yield next;
+  } else {
+    this.throw(401);
+  }
+};
 
 module.exports = function(assets) {
   var router = new Router();
@@ -12,11 +21,11 @@ module.exports = function(assets) {
   });
 
   router.all('/success', function *() {
-    this.body('Success!');
+    this.body = 'Success!';
   });
 
   router.all('/error', function *() {
-    this.body = 'Encountered and error';
+    this.body = 'Error';
   });
 
   var _register = new Router({
@@ -35,19 +44,17 @@ module.exports = function(assets) {
   _login.get('/', function *() {
     yield this.render('login.jade');
   });
-
-  _login.post('/', bodyParser, passport.authenticate('local', {
-    successRedirect: '/success',
-    failureRedirect: '/error',
-  }));
+  _login.post('/', bodyParser, assets.user.login);
 
   router.use(_login.routes());
+
+  router.all('/logout', assets.user.logout);
 
   var _profile = new Router({
     prefix: '/profile'
   });
 
-  // FIXME
+  _profile.get('/self', requireAuth, assets.user.profile);
 
   router.use(_profile.routes());
 

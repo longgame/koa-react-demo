@@ -5,19 +5,18 @@ var passport = require('koa-passport'),
     co = require('co');
 
 module.exports = function(User) {
-  passport.serializeUser = function(user, done) {
+  passport.serializeUser(function(user, done) {
     done(null, user.id);
-  };
+  });
 
-  passport.deserializeUser = function(id, done) {
+  passport.deserializeUser(function(id, done) {
     co(function *() {
       var user = yield User.findOne({
         where: { id: id }
       });
-    }).then(function(user) {
       done(null, user);
     });
-  };
+  });
 
   var LocalStrategy = require('passport-local').Strategy;
   passport.use(new LocalStrategy({
@@ -29,13 +28,11 @@ module.exports = function(User) {
       });
 
       if (bcrypt.compareSync(password, user.password)) {
-        return user;
+        done(null, user);
       } else {
         // FIXME: Flash message here
-        return false;
+        done(null, false);
       };
-    }).then(function(user) {
-      done(null, user);
     });
   }));
   
