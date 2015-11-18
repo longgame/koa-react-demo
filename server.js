@@ -6,9 +6,8 @@ var _ = require('lodash'),
     Jade = require('koa-jade'),
     serve = require('koa-static');
 
-var config = require('./config/config'),
-    router = require('./config/routes'),
-    models = require('./src/models'),
+var models = require('./src/models'),
+    controllers = require('./src/controllers')(models),
     views = require('koa-views')(
       path.join(__dirname, 'src/views'), {
         default: 'html',
@@ -18,17 +17,22 @@ var config = require('./config/config'),
       }
     );
 
-var debug = require('debug')(config.app.name);
+var settings = require('./config/config'),
+    router = require('./config/routes')(controllers);
+
+var debug = require('debug')(settings.app.name);
 
 var app = module.exports = koa();
-
-app.models = models;
-
-var passport = require('./config/passport')(app);
 
 app.use(views);
 app.use(router.routes());
 
+// Authentication
+var passport = require('./config/passport')(models['user']);
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Static files
 app.use(serve('./public'));
 app.use(serve('./dist'));
 
@@ -45,8 +49,8 @@ app.use(function *(next) {
 });
 
 if (!module.parent) {
-  app.listen(config.app.port);
+  app.listen(settings.app.port);
   debug('Listening on %s:%s',
-    config.app.host,
-    config.app.port);
+    settings.app.host,
+    settings.app.port);
 }

@@ -1,11 +1,10 @@
 'use strict;'
 
 var passport = require('koa-passport'),
-    bcrypt = require('bcrypt');
+    bcrypt = require('bcrypt'),
+    co = require('co');
 
-module.exports = function(app) {
-  var User = app.models['user'];
-
+module.exports = function(User) {
   passport.serializeUser = function(user, done) {
     done(null, user.id);
   };
@@ -24,26 +23,21 @@ module.exports = function(app) {
   passport.use(new LocalStrategy({
     usernameField: 'email',
   }, function(email, password, done) {
-    var user;
-
     co(function *() {
       var user = yield User.findOne({
         where: { email: email }
       });
 
       if (bcrypt.compareSync(password, user.password)) {
-        return user
+        return user;
       } else {
-        debug('Invalid password');
+        // FIXME: Flash message here
         return false;
       };
     }).then(function(user) {
       done(null, user);
     });
   }));
-
-  app.use(passport.initialize());
-  app.use(passport.session());
   
   return passport;
 };

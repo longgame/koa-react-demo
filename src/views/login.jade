@@ -1,0 +1,19 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF8")
+    title Koa Boilerplate
+  body
+    h1 Login Form
+      form(action='/login', method='post')
+        label Email: 
+          input(type='text', name='email')
+        br
+        label Password: 
+          input(type='password', name='password')
+        br
+        button(type='submit') Login
+    #hello
+    #world
+    script(src="bundle.js")
+
