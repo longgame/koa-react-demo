@@ -84,29 +84,24 @@ $ docker exec koa_web_1 touch server.js
 
 This project uses [sequelize-cli](https://github.com/sequelize/cli) for database migrations.
 
-_Create a new model and migration_
+_Create new model and migration_
 
 ```bash
 $ sequelize model:create --name=<title> --attributes="<attr>:<type>, <attr>:<type>"
 ```
 
-_Create a database seed_
+_Seed data_
 
 ```bash
 $ sequelize seed:create --name=<title>
 ```
 
-_Run outstanding migrations_
+_Run migrations_
 
 ```bash
 $ docker exec koa_web_1 sequelize db:migrate
-```
-
-_Undo last migration_
-
-This is useful if you want to make changes to a migration.
-```bash
 $ docker exec koa_web_1 sequelize db:migrate:undo
+$ docker exec koa_web_1 sequelize db:migrate:undo:all
 ```
 
 ## Testing
