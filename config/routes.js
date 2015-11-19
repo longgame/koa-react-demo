@@ -9,12 +9,23 @@ var requireAuth = function *(next) {
   if (this.req.isAuthenticated()) {
     yield next;
   } else {
+    this.flash('error', 'You must log in to do that');
     this.throw(401);
   }
 };
 
 module.exports = function(assets) {
   var router = new Router();
+
+  router.use(function *(next) {
+    try {
+      yield next;
+    } catch(e) {
+      this.status = e.status || 500;
+      this.body = this.flash('error') || e.message;
+      this.app.emit('error', e, this);
+    };
+  });
 
   router.get('/', function *() {
     yield this.render('index.jade');

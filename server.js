@@ -30,6 +30,9 @@ var session = require('koa-generic-session');
 app.keys = ['session-secret'];                      // FIXME
 app.use(session());
 
+var flash = require('koa-connect-flash');
+app.use(flash());
+
 // Authentication
 var passport = require('./config/passport')(models['user']);
 app.use(passport.initialize());
@@ -44,7 +47,16 @@ app.use(serve('./dist'));
 app.use(views);
 app.use(router.routes());
 
-// Print how long each page load takes
+
+// Middleware
+app.use(function *(next) {
+  try {
+    yield next;
+  } catch(e) {
+    debug('ERROR ' + e.message);
+  };
+});
+
 app.use(function *(next) {
   var start = new Date;
   yield next;
@@ -57,6 +69,7 @@ app.use(function *(next) {
     (end-start));
 });
 
+// Start the server
 if (!module.parent) {
   app.listen(settings.app.port);
   console.log('Listening on %s:%s',

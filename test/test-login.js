@@ -30,7 +30,7 @@ describe('Login', function() {
   });
 
   /*
-  it ('POST redirects unregistered account', function *() {
+  it ('redirects unregistered account', function *() {
     var creds = helpers.test_user;
     creds.email = 'user@example.com';
 
@@ -46,8 +46,7 @@ describe('Login', function() {
 
     // FIXME: This should throw a 404
     var res = yield helpers.login(creds)
-    expect(res.status).to.equal(302);
-    expect(res.headers.location).to.equal('/error');
+    expect(res.status).to.equal(401);
   });
 
   /*

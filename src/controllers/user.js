@@ -27,16 +27,23 @@ module.exports = function(Models) {
       user.reload();
 
       this.req.login(user, function(err) {
-        // FIXME: handle error
         this.redirect('/profile/self');
       }.bind(this));
     },
 
     login: function *() {
-      yield passport.authenticate('local', {
-        successRedirect: '/profile/self',
-        failureRedirect: '/error',
-      });
+      var ctx = this;
+      yield passport.authenticate('local', function *(err, user, info) {
+        if (err) throw(err);
+
+        if (!user) {
+          ctx.flash('error', 'Invalid username or password');
+          ctx.throw(401);
+        } else {
+          yield ctx.login(user);
+          ctx.redirect('/profile/self');
+        }
+      }).call(this);
     },
 
     logout: function *() {
