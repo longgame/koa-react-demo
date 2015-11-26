@@ -1,6 +1,5 @@
 import React from 'react';
-import ImageGrid from './components/ImageGrid';
-import ImageActions from './actions/ImageActions';
+import TodoList from './components/TodoList';
 
 class Hello extends React.Component {
   render() {
@@ -10,7 +9,7 @@ class Hello extends React.Component {
 
 class World extends React.Component {
   render() {
-    return <ImageGrid/>
+    return <TodoList />
   }
 }
 
@@ -36,10 +35,6 @@ const Counter = React.createClass({
   }
 });
 
-setInterval(function() {
-  ImageActions.fetchList();
-}, 5000);
-
-React.render(<Hello/>, document.getElementById('hello'));
-React.render(<World/>, document.getElementById('world'));
-React.render(<Counter/>, document.getElementById('counter'));
+React.render(<Hello />, document.getElementById('hello'));
+React.render(<TodoList />, document.getElementById('world'));
+React.render(<Counter />, document.getElementById('counter'));
