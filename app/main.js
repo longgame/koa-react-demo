@@ -1,40 +1,16 @@
 import React from 'react';
+import { render } from 'react-dom';
+import { Router, Route, Link } from 'react-router';
+
+import Counter from './components/Counter';
 import TodoList from './components/TodoList';
 
 class Hello extends React.Component {
   render() {
-    return <h1>Hello Koa!</h1>
+    return <h1>Hello {this.props.name}!</h1>
   }
 }
 
-class World extends React.Component {
-  render() {
-    return <TodoList />
-  }
-}
-
-const Counter = React.createClass({
-  getInitialState: function() {
-    return {
-      presscount: 0,
-    }
-  },
-  handleClick: function() {
-    this.setState({
-      presscount: this.state.presscount + 1,
-    });
-  },
-  render: function() {
-    return (
-      <div>
-        <button className='btn btn-primary' onClick={this.handleClick}>
-          Pressed {this.state.presscount} times
-        </button>
-      </div>
-    );
-  }
-});
-
-React.render(<Hello />, document.getElementById('hello'));
-React.render(<TodoList />, document.getElementById('world'));
-React.render(<Counter />, document.getElementById('counter'));
+render(<Hello name='React'/>, document.getElementById('hello'));
+render(<TodoList />, document.getElementById('world'));
+render(<Counter />, document.getElementById('counter'));

@@ -41,6 +41,7 @@
     "react": "^0.14.2",
     "react-bootstrap": "^0.28.1",
     "react-dom": "^0.14.3",
+    "react-router": "^1.0.0",
     "reflux": "^0.3.0",
     "sequelize": "^3.13.0",
     "underscore": "^1.8.3"
@@ -63,12 +64,15 @@
     "compose",
     "docker",
     "docker-compose",
+    "gulp",
     "koa",
     "koajs",
     "mocha",
     "passport",
     "postgres",
     "postgresql",
+    "react",
+    "reflux",
     "sequelize",
     "webpack"
   ]
