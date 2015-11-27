@@ -8,23 +8,18 @@ var TodoActions = require('../actions/TodoActions');
 var todoCounter = 0,
     localStorageKey = 'todos';
 
-function getItemByKey(list, key) {
-  return _.find(list, function(item) {
-    return item.key == key;
-  });
-};
-
 var TodoStore = Reflux.createStore({
   listenables: [TodoActions],
   init: function() {
-    var loadedList = localStorage.getItem(localStorageKey);
+    //var loadedList = localStorage.getItem(localStorageKey);
+    var loadedList;
     if (!loadedList) {
       // No list is in localStorage.  Create a new one.
       this.list = [{
         key: todoCounter++,
         created: new Date(),
         isComplete: false,
-        label: 'Rule the web',
+        label: 'Write a baller webapp.',
       }];
     } else {
       this.list = _.map(JSON.parse(loadedList), function(item) {
@@ -34,48 +29,60 @@ var TodoStore = Reflux.createStore({
     }
     return this.list;
   },
-  // Update the list in localStorage and trigger listening components
-  updateList: function(list) {
-    localStorage.setItem(localStorageKey, JSON.stringify(list));
-    this.list = list;
-    this.trigger(list);
+  refresh: function() {
+    //localStorage.setItem(localStorageKey, JSON.stringify(this.list));
+    this.trigger(this.list);
   },
   onEditItem: function(itemKey, newLabel) {
-    var item = getItemByKey(this.list, itemKey);
-    if (!item) return;
-    item.label = newLabel;
-    this.updateList(this.list);
+    var item = _.findWhere(this.list, { key: itemKey });
+    if (item) {
+      item.label = newLabel;
+      this.refresh();
+    }
   },
   onAddItem: function(label) {
-    this.updateList([{
+    var list = _.flatten([{
       key: todoCounter++,
       created: new Date(),
       isComplete: false,
       label: label,
-    }].concat(this.list));
+    }, this.list]);
+    this.list = list;
+    this.refresh();
+    
   },
   onRemoveItem: function(itemKey) {
-    this.updateList(_.filter(this.list, function(item) {
+    var list = _.filter(this.list, function(item) {
       return item.key !== itemKey;
-    }));
+    });
+    this.list = list;
+    this.refresh();
   },
   onToggleItem: function(itemKey) {
-    var item = getItemByKey(this.list, itemKey);
+    var item = _.findWhere(this.list, { key: itemKey });
     if (item) {
       item.isComplete = !item.isComplete;
-      this.updateList(this.list);
+      this.refresh();
     }
   },
-  onToggleAllItems: function(checked) {
-    this.updateList(_.map(this.list, function(item) {
-      item.isComplete = checked;
-      return item;
-    }));
+  onToggleAllItems: function() {
+    var unchecked = _.where(this.list, { isComplete: false });
+    console.log(unchecked);
+    if (unchecked.length == 0) {
+      _.each(this.list, function(item) {
+        item.isComplete = false;
+      });
+    } else {
+      for (var j=0; j<unchecked.length; j++) {
+        unchecked[j].isComplete = true;
+      }
+    }
+    this.refresh();
   },
   onClearCompleted: function() {
-    this.updateList(_.filter(this.list, function(item) {
-      return item.isComplete !== true;
-    }));
+    var incomplete = _.where(this.list, { isComplete: false });
+    this.list = incomplete;
+    this.refresh();
   },
 });
 

@@ -8,19 +8,28 @@ body {
 }
 
 .todo-list ul {
-  padding: 0;
+  padding: 10px;
 }
 
 .todo-list li {
   list-style: none;
+  padding: 5px;
+  font-size: 30px;
+  border-bottom: 2px solid #ededed;
+}
+
+.todo-list input[type='checkbox'] {
+  display: none;
 }
 
 .todo-list input[type='checkbox'] + label {
-  background: url('/assets/checkbox-marked.png') left center no-repeat;
-  width: 40px;
+  background: url('/assets/checkbox-blank.png') left center no-repeat;
+  background-size: 30px;
+  padding-left: 40px;
 }
 
-.todo-item {
-  font-size: 20px;
-  border-bottom: 1px solid #ededed;
+.todo-list input[type='checkbox']:checked + label {
+  background: url('/assets/checkbox-marked.png') left center no-repeat;
+  background-size: 30px;
+  padding-left: 40px;
 }

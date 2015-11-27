@@ -1,6 +1,10 @@
 'use strict;'
 
-var React = require('react');
+require('bootstrap');
+require('react-bootstrap');
+
+import React from 'react';
+import { Button } from 'react-bootstrap';
 
 const Counter = React.createClass({
   getInitialState: function() {
@@ -16,9 +20,12 @@ const Counter = React.createClass({
   render: function() {
     return (
       <div>
-        <button className='btn btn-primary' onClick={this.handleClick}>
-          Pressed {this.state.presscount} times
-        </button>
+        <Button 
+          bsStyle= { 'primary' }
+          bsSize= { 'large' }
+          onClick= { this.handleClick }
+        >{this.state.presscount}
+        </Button>
       </div>
     );
   }

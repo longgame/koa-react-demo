@@ -19,6 +19,7 @@
   "homepage": "https://github.com/jjduhamel/ncaa-controller#readme",
   "dependencies": {
     "bcrypt": "^0.8.5",
+    "bootstrap": "^3.3.6",
     "co": "^4.6.0",
     "dotenv": "^1.2.0",
     "jade": "^1.11.0",

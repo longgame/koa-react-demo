@@ -10,7 +10,7 @@ var TodoStore = require('../stores/TodoStore'),
 var checkboxBlank = require('../assets/checkbox-blank.png'),
     checkboxMarked = require('../assets/checkbox-marked.png');
 
-var NewTodo = React.createClass({
+var TodoInput = React.createClass({
   handleValueChange: function(evt) {
     var text = evt.target.value;
     if (evt.which === 13 && text) {   // Enter
@@ -20,12 +20,22 @@ var NewTodo = React.createClass({
       evt.target.value = '';
     }
   },
+  handleToggle: function(evt) {
+    console.log(evt.target);
+    TodoActions.toggleAllItems();
+  },
   render: function() {
     return (
-      <div>
-        <h3>Todo List:</h3>
-        <input id='new-todo' placeholder='What needs to be done?' onKeyUp={this.handleValueChange} />
-      </div>
+      <li>
+        <div className='todo-input'>
+          <input
+            className='toggle-all'
+            type='checkbox'
+            checked={!!this.props.isComplete} />
+          <label onClick={this.handleToggle}></label>
+          <input placeholder='Todos' onKeyUp={this.handleValueChange} />
+        </div>
+      </li>
     );
   },
 });
@@ -44,8 +54,11 @@ var TodoItem = React.createClass({
     return (
       <li>
         <div className='todo-item'>
-          <input className='toggle' type='checkbox' checked={!!this.props.isComplete} onChange={this.handleToggle} />
-          <label onDoubleClick={this.handleToggle}>{this.props.label}</label>
+          <input
+            className='toggle'
+            type='checkbox'
+            checked={!!this.props.isComplete} />
+          <label onClick={this.handleToggle}>{this.props.label}</label>
         </div>
       </li>
     );
@@ -59,21 +72,20 @@ var TodoList = React.createClass({
       list: TodoStore.list,
     };
   },
-  toggleAll: function(evt) {
-    TodoActions.toggleAllItems(evt.target.checked);
-  },
   render: function() {
     var list = this.state.list;
     return (
       <div className='todo-list'>
         <header id='header'>
-          <NewTodo />
         </header>
-        <input id='toggle-all' type='checkbox' onChange={this.toggleAll} />
-        <label htmlFor='toggle-all'>Mark all as complete</label>
         <ul id='todo-list'>
+          <TodoInput />
           { list.map(function(item) {
-            return <TodoItem label={item.label} isComplete={item.isComplete} id={item.key} key={item.key} />;
+            return <TodoItem
+                      label={item.label}
+                      isComplete={item.isComplete}
+                      id={item.key}
+                      key={item.key} />;
           })}
         </ul>
         <footer id='footer'>
