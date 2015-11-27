@@ -7,6 +7,9 @@ var _ = require('underscore'),
 var TodoStore = require('../stores/TodoStore'),
     TodoActions = require('../actions/TodoActions');
 
+var checkboxBlank = require('../images/checkbox-blank.png'),
+    checkboxMarked = require('../images/checkbox-marked.png');
+
 var NewTodo = React.createClass({
   handleValueChange: function(evt) {
     var text = evt.target.value;
@@ -40,7 +43,7 @@ var TodoItem = React.createClass({
   render: function() {
     return (
       <li>
-        <div>
+        <div className='todo-item'>
           <input className='toggle' type='checkbox' checked={!!this.props.isComplete} onChange={this.handleToggle} />
           <label onDoubleClick={this.handleToggle}>{this.props.label}</label>
         </div>
@@ -62,19 +65,17 @@ var TodoList = React.createClass({
   render: function() {
     var list = this.state.list;
     return (
-      <div>
+      <div className='todo-list'>
         <header id='header'>
           <NewTodo />
         </header>
         <input id='toggle-all' type='checkbox' onChange={this.toggleAll} />
         <label htmlFor='toggle-all'>Mark all as complete</label>
-        <section id='main'>
-          <ul id='todo-list'>
-            { list.map(function(item) {
-              return <TodoItem label={item.label} isComplete={item.isComplete} id={item.key} key={item.key} />;
-            })}
-          </ul>
-        </section>
+        <ul id='todo-list'>
+          { list.map(function(item) {
+            return <TodoItem label={item.label} isComplete={item.isComplete} id={item.key} key={item.key} />;
+          })}
+        </ul>
         <footer id='footer'>
           <button id='clear-completed' onClick={TodoActions.clearCompleted}>Clear Tasks</button>
         </footer>

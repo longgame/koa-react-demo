@@ -1,0 +1,26 @@
+body {
+  background-color: #0aa;
+  font-family: helvetica;
+}
+
+.todo-list {
+  background-color: #fff;
+}
+
+.todo-list ul {
+  padding: 0;
+}
+
+.todo-list li {
+  list-style: none;
+}
+
+.todo-list input[type='checkbox'] + label {
+  background: url('/images/checkbox-marked.png') left center no-repeat;
+  width: 40px;
+}
+
+.todo-item {
+  font-size: 20px;
+  border-bottom: 1px solid #ededed;
+}

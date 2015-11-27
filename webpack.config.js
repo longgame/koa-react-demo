@@ -4,20 +4,30 @@ var path = require('path'),
     webpack = require('webpack');
 
 module.exports = {
+  context: path.resolve(__dirname, 'app'),
   entry: {
-    app: [ path.resolve(__dirname, 'app/main.js') ]
+    app: [ './main.js' ],
   },
   output: {
+    filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js'
+    publicPath: path.resolve(__dirname, 'public'),
   },
   module: {
     loaders: [
       { 
-        test: /app\/.+\.(js|jsx)/,
+        test: /\.(js|jsx|es6)$/,
         exclude: /node_modules/,
         loader: 'babel',
-      }
+      },
+      {
+        test: /\.(scss|sass)$/,
+        loader: 'style-loader!css-loader!sass-loader',
+      },
+      {
+        test: /\.(png|jpg|jpeg|gif|svg)$/,
+        loader: 'file-loader?name=images/[name].[ext]',
+      },
     ]
   },
   plugins: [
