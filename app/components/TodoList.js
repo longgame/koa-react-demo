@@ -7,8 +7,8 @@ var _ = require('underscore'),
 var TodoStore = require('../stores/TodoStore'),
     TodoActions = require('../actions/TodoActions');
 
-var checkboxBlank = require('../images/checkbox-blank.png'),
-    checkboxMarked = require('../images/checkbox-marked.png');
+var checkboxBlank = require('../assets/checkbox-blank.png'),
+    checkboxMarked = require('../assets/checkbox-marked.png');
 
 var NewTodo = React.createClass({
   handleValueChange: function(evt) {
