@@ -13,6 +13,4 @@ class Hello extends React.Component {
   }
 }
 
-render(<Hello name='React'/>, document.getElementById('hello'));
-render(<Counter />, document.getElementById('counter'));
 render(<TodoList />, document.getElementById('content'));

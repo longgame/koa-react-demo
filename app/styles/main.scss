@@ -1,10 +1,29 @@
 body {
   background-color: #0aa;
-  font-family: helvetica;
+  font-family: Verdana, Geneva, sans-serif;
+}
+
+input {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-style: italic;
+  font-size: 24px;
+  outline: none;
+  border: 0px;
+}
+
+.todo-list .edit {
+  display: none;
+}
+
+.todo-list .editing .edit {
+  display: inline;
 }
 
 .todo-list {
   background-color: #fff;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-size: 24px;
+  width: 460px;
 }
 
 .todo-list ul {
@@ -14,8 +33,22 @@ body {
 .todo-list li {
   list-style: none;
   padding: 5px;
-  font-size: 30px;
   border-bottom: 2px solid #ededed;
+}
+
+.todo-list button {
+  background-color: Transparent;
+  color: #f80;
+  border: none;
+  cursor: pointer;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-size: 20px;
+  overflow: hidden;
+  outline: none;
+}
+
+.todo-list img {
+  height: 30px;
 }
 
 .todo-list input[type='checkbox'] {
@@ -23,13 +56,28 @@ body {
 }
 
 .todo-list input[type='checkbox'] + label {
-  background: url('/assets/checkbox-blank.png') left center no-repeat;
   background-size: 30px;
-  padding-left: 40px;
+  padding-left: 10px;
 }
 
 .todo-list input[type='checkbox']:checked + label {
-  background: url('/assets/checkbox-marked.png') left center no-repeat;
+  background: url('/assets/check.png') left center no-repeat;
   background-size: 30px;
-  padding-left: 40px;
+  padding-left: 30px;
+}
+
+#todo-header {
+  margin-top: 0;
+}
+
+#todo-header button {
+  float: right;
+}
+
+#todo-body {
+  margin-top: 0;
+}
+
+#todo-footer {
+  margin-top: 0;
 }

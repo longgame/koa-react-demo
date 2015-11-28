@@ -19,7 +19,7 @@ var TodoStore = Reflux.createStore({
         key: todoCounter++,
         created: new Date(),
         isComplete: false,
-        label: 'Write a baller webapp.',
+        label: '<h1>http://longgame.co</h1>',
       }];
     } else {
       this.list = _.map(JSON.parse(loadedList), function(item) {

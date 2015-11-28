@@ -21,11 +21,20 @@ module.exports = {
         loader: 'babel',
       },
       {
+        test: /\.css$/,
+        loader: 'style-loader!css-loader',
+      },
+      {
+        test: /\.less$/,
+        loader: 'style-loader!css-loader!less-loader',
+      },
+      {
         test: /\.(scss|sass)$/,
         loader: 'style-loader!css-loader!sass-loader',
       },
       {
         test: /\.(png|jpg|jpeg|gif|svg)$/,
+        // FIXME: Convert this to url-loader
         loader: 'file-loader?name=assets/[name].[ext]',
       },
     ]
