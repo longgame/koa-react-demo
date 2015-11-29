@@ -10,14 +10,15 @@ The development toolchain is based on docker.
 
 * [docker](http://docs.docker.com/engine/installation/)
 * [docker-compose](https://docs.docker.com/compose/install/)
+* [docker-machine](https://docs.docker.com/machine/install-machine/)
 
-*Note:* If you're developing on OSX, you need to use [boot2docker](http://boot2docker.io/).  After you install it, follow these configuration steps.
+**Configure Docker Machine**
+
+If  you're on OSX or Windows, you'll need to configure Docker Machine.
 
 ```bash
-$ boot2docker init
-$ VBoxManage modifyvm "boot2docker-vm" --natpf1 "tcp-port3000,tcp,,3000,,3000";
-$ boot2docker start           # <-- Do this after you reboot your computer
-$ $(boot2docker shellinit)    # <-- Do this for every session
+$ docker-machine create --driver virtualbox dev
+$ $(docker-machine env dev)         <-- Do this whenever you reboot the host
 ```
 
 **Configure Environment**
