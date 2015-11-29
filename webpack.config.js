@@ -37,6 +37,10 @@ module.exports = {
         // FIXME: Convert this to url-loader
         loader: 'file-loader?name=assets/[name].[ext]',
       },
+      {
+        test: /\.rt$/,
+        loader: 'react-templates-loader',
+      }
     ]
   },
   plugins: [

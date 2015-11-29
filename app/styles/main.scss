@@ -3,81 +3,75 @@ body {
   font-family: Verdana, Geneva, sans-serif;
 }
 
-input {
-  font-family: "Comic Sans MS", cursive, sans-serif;
-  font-style: italic;
-  font-size: 24px;
-  outline: none;
-  border: 0px;
-}
-
-.todo-list .edit {
+.hidden {
   display: none;
-}
-
-.todo-list .editing .edit {
-  display: inline;
 }
 
 .todo-list {
   background-color: #fff;
   font-family: "Comic Sans MS", cursive, sans-serif;
-  font-size: 24px;
+  font-size: 16px;
   width: 460px;
+
+  ul {
+    padding: 10px;
+  }
+
+  li {
+    list-style: none;
+    padding: 5px;
+    border-bottom: 2px solid #ededed;
+  }
+
+  input {
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    font-style: italic;
+    font-size: 16px;
+    line-height: 40px;
+    outline: none;
+    border: 0px;
+    width: 400px;
+  }
+
+  button {
+    background-color: Transparent;
+    color: #f80;
+    border: none;
+    cursor: pointer;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    font-size: 20px;
+    overflow: hidden;
+    outline: none;
+  }
+
+  img {
+    height: 20px;
+  }
 }
 
-.todo-list ul {
-  padding: 10px;
-}
+.todo-item {
+  position: relative;
+  width: 420px;
+  line-height: 40px;
 
-.todo-list li {
-  list-style: none;
-  padding: 5px;
-  border-bottom: 2px solid #ededed;
-}
+  .view {
+    display: inline;
 
-.todo-list button {
-  background-color: Transparent;
-  color: #f80;
-  border: none;
-  cursor: pointer;
-  font-family: "Comic Sans MS", cursive, sans-serif;
-  font-size: 20px;
-  overflow: hidden;
-  outline: none;
-}
+    .label {
+      display: inline;
+    }
 
-.todo-list img {
-  height: 30px;
-}
+    .control {
+      display: none;
+    }
+  }
 
-.todo-list input[type='checkbox'] {
-  display: none;
-}
+  .view:hover .control {
+    display: inline;
+  }
 
-.todo-list input[type='checkbox'] + label {
-  background-size: 30px;
-  padding-left: 10px;
-}
-
-.todo-list input[type='checkbox']:checked + label {
-  background: url('/assets/check.png') left center no-repeat;
-  background-size: 30px;
-  padding-left: 30px;
-}
-
-#todo-header {
-  margin-top: 0;
-}
-
-#todo-header button {
-  float: right;
-}
-
-#todo-body {
-  margin-top: 0;
-}
-
-#todo-footer {
-  margin-top: 0;
+  .checkmark {
+    color: green;
+    float: right;
+  }
 }

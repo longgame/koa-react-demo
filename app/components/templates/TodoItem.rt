@@ -1,0 +1,53 @@
+<div class='todo-item'>
+  <div
+    rt-if='!this.state.isEditing'
+    class='view'
+  >
+    <div
+      class='label'
+      onClick="{ this.handleToggle }"
+    >
+      { this.props.label }
+    </div>
+
+    <div class='control'>
+      <button
+        class='edit-item'
+        onClick={this.handleEditStart}
+      ><img
+        className='edit-button'
+        src='/assets/pencil.png'
+      /></button>
+              
+      <button
+        class='delete-item'
+        onClick={this.handleDelete}
+      ><img
+        className='image'
+        src='/assets/trash.png'
+      /></button>
+    </div>
+  </div>
+
+  <div
+    rt-if='this.state.isEditing'
+    class='view'
+  >
+    <input
+      rt-class="{
+        'edit': true,
+      }"
+      valueLink="{ this.linkState('editValue') }"
+      onKeyUp="{ this.handleValueChange }"
+    />
+  </div>
+
+  <div
+    rt-class="{
+      'checkmark': true,
+      'hidden': !this.props.isComplete,
+    }"
+  >
+    ✓
+  </div>
+</div>

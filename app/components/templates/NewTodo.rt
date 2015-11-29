@@ -1,0 +1,15 @@
+<div
+  class='new-todo todo-item'
+>
+  <input
+    class='input'
+    onKeyUp={this.handleValueChange}
+  />
+
+  <div
+    class='checkmark'
+    onClick="{ this.handleToggleAll }"
+  >
+    ✓
+  </div>
+</div>

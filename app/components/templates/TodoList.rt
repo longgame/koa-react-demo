@@ -1,0 +1,23 @@
+<rt-require dependency='../TodoItem' as='Todo' />
+<rt-require dependency='../NewTodo' as='NewTodo' />
+
+<div class='todo-list'>
+  <header class='header'>
+    <h1>Todo List</h1>
+  </header>
+  <ul class='body'>
+    <li>
+      <NewTodo />
+    </li>
+    <li rt-repeat='item in this.state.list' key='{ item.key }'>
+      <Todo
+        label='{ item.label }'
+        isComplete='{ item.isComplete }'
+        id='{ item.key }'
+        key='{ item.key }'
+      />
+    </li>
+  </ul>
+  <footer class='footer'>
+  </footer>
+</div>

@@ -11,7 +11,7 @@ var todoCounter = 0,
 var TodoStore = Reflux.createStore({
   listenables: [TodoActions],
   init: function() {
-    //var loadedList = localStorage.getItem(localStorageKey);
+    var loadedList = localStorage.getItem(localStorageKey);
     var loadedList;
     if (!loadedList) {
       // No list is in localStorage.  Create a new one.
@@ -30,7 +30,7 @@ var TodoStore = Reflux.createStore({
     return this.list;
   },
   refresh: function() {
-    //localStorage.setItem(localStorageKey, JSON.stringify(this.list));
+    localStorage.setItem(localStorageKey, JSON.stringify(this.list));
     this.trigger(this.list);
   },
   onEditItem: function(itemKey, newLabel) {
