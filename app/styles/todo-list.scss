@@ -1,0 +1,74 @@
+#todo-list {
+  @import 'todo-item';
+
+  background-color: #fff;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-size: 16px;
+  width: 460px;
+
+  #todo-header {
+  }
+
+  #todo-body {
+    padding: 10px;
+
+    ul {
+    }
+
+    li {
+      list-style: none;
+      padding: 5px;
+      border-bottom: 2px solid #ededed;
+    }
+
+    input {
+      font-family: "Comic Sans MS", cursive, sans-serif;
+      font-style: italic;
+      font-size: 16px;
+      line-height: 40px;
+      outline: none;
+      border: 0px;
+      width: 400px;
+    }
+
+    button {
+      background-color: Transparent;
+      color: #f80;
+      border: none;
+      cursor: pointer;
+      font-family: "Comic Sans MS", cursive, sans-serif;
+      font-size: 20px;
+      overflow: hidden;
+      outline: none;
+    }
+
+    img {
+      height: 20px;
+    }
+  }
+
+  #todo-footer {
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    li {
+      display: inline;
+      padding: 10px;
+    }
+
+    a {
+      color: #d3d3d3;
+      text-decoration: none;
+      margin: 10px;
+    }
+
+    a:hover {
+      color: black;
+      text-decoration: none;
+      margin: 10px;
+    }
+  }
+}

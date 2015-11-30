@@ -1,0 +1,26 @@
+.todo-item {
+  position: relative;
+  width: 420px;
+  line-height: 40px;
+
+  .view {
+    display: inline;
+
+    .label {
+      display: inline;
+    }
+
+    .control {
+      display: none;
+    }
+  }
+
+  .view:hover .control {
+    display: inline;
+  }
+
+  .checkmark {
+    color: green;
+    float: right;
+  }
+}
