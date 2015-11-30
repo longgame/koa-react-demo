@@ -20,5 +20,20 @@ module.exports = React.createClass({
       list: TodoStore.list,
     };
   },
+  displayedItems: function() {
+    switch (this.props.location.pathname) {
+      case '/':
+      case '/all':
+        return this.state.list;
+      case '/complete':
+        return _.where(this.state.list, {
+          isComplete: true
+        });
+      case '/active':
+        return _.where(this.state.list, {
+          isComplete: false
+        });
+    }
+  },
   render: template
 });

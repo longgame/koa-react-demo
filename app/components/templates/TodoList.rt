@@ -1,15 +1,16 @@
 <rt-require dependency='../TodoItem' as='Todo' />
 <rt-require dependency='../NewTodo' as='NewTodo' />
+<rt-require dependency='../NavTodo' as='NavTodo' />
 
-<div class='todo-list'>
-  <header class='header'>
+<div id='todo-list'>
+  <header id='todo-header'>
     <h1>Todo List</h1>
   </header>
-  <ul class='body'>
+  <ul id='todo-body'>
     <li>
       <NewTodo />
     </li>
-    <li rt-repeat='item in this.state.list' key='{ item.key }'>
+    <li rt-repeat='item in this.displayedItems()' key='{ item.key }'>
       <Todo
         label='{ item.label }'
         isComplete='{ item.isComplete }'
@@ -18,6 +19,7 @@
       />
     </li>
   </ul>
-  <footer class='footer'>
+  <footer id='todo-footer'>
+    <NavTodo />
   </footer>
 </div>

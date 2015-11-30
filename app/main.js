@@ -6,12 +6,21 @@ import './styles/main.scss';
 
 import Counter from './components/Counter';
 import TodoList from './components/TodoList';
+import About from './components/About';
+import Navbar from './components/Navbar';
 
 class App extends React.Component {
   render() {
     return (
       <div id='app'>
-        <TodoList />
+        <div id='app-header'>
+          <Navbar />
+        </div>
+        <div id='app-body'>
+          { this.props.children }
+        </div>
+        <div id='app-footer'>
+        </div>
       </div>
     );
   }
@@ -19,7 +28,13 @@ class App extends React.Component {
 
 var routes = (
   <Router>
-    <Route path='/' component={App}>
+    <Route component={App}>
+      <Route path='/' component={TodoList} />
+        <Route path='/all' component={TodoList} />
+        <Route path='/active' component={TodoList} />
+        <Route path='/complete' component={TodoList} />
+      />
+      <Route path='/about' component={About} />
     </Route>
   </Router>
 );

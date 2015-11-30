@@ -7,45 +7,118 @@ body {
   display: none;
 }
 
-.todo-list {
+#app-header {
+  .navbar {
+    background-color: red;
+    padding: 10px;
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    li {
+      display: inline;
+      padding: 10px;
+    }
+
+    a {
+      color: #afed11;
+      text-decoration: none;
+      font-size: 24px;
+    }
+
+    a:hover {
+      color: #11edbd;
+      text-decoration: none;
+      font-size: 24px;
+    }
+  }
+}
+
+#app {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-size: 16px;
+}
+
+#about {
+  background-color: #fff;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-size: 16px;
+  width: 460px;
+}
+
+#todo-list {
   background-color: #fff;
   font-family: "Comic Sans MS", cursive, sans-serif;
   font-size: 16px;
   width: 460px;
 
-  ul {
+  #todo-header {
+  }
+
+  #todo-body {
     padding: 10px;
+
+    ul {
+    }
+
+    li {
+      list-style: none;
+      padding: 5px;
+      border-bottom: 2px solid #ededed;
+    }
+
+    input {
+      font-family: "Comic Sans MS", cursive, sans-serif;
+      font-style: italic;
+      font-size: 16px;
+      line-height: 40px;
+      outline: none;
+      border: 0px;
+      width: 400px;
+    }
+
+    button {
+      background-color: Transparent;
+      color: #f80;
+      border: none;
+      cursor: pointer;
+      font-family: "Comic Sans MS", cursive, sans-serif;
+      font-size: 20px;
+      overflow: hidden;
+      outline: none;
+    }
+
+    img {
+      height: 20px;
+    }
   }
 
-  li {
-    list-style: none;
-    padding: 5px;
-    border-bottom: 2px solid #ededed;
-  }
+  #todo-footer {
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
 
-  input {
-    font-family: "Comic Sans MS", cursive, sans-serif;
-    font-style: italic;
-    font-size: 16px;
-    line-height: 40px;
-    outline: none;
-    border: 0px;
-    width: 400px;
-  }
+    li {
+      display: inline;
+      padding: 10px;
+    }
 
-  button {
-    background-color: Transparent;
-    color: #f80;
-    border: none;
-    cursor: pointer;
-    font-family: "Comic Sans MS", cursive, sans-serif;
-    font-size: 20px;
-    overflow: hidden;
-    outline: none;
-  }
+    a {
+      color: #d3d3d3;
+      text-decoration: none;
+      margin: 10px;
+    }
 
-  img {
-    height: 20px;
+    a:hover {
+      color: black;
+      text-decoration: none;
+      margin: 10px;
+    }
   }
 }
 
