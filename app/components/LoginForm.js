@@ -24,5 +24,10 @@ module.exports = React.createClass({
       password: this.state.password
     });
   },
+  handleRegister: function(event) {
+    UserActions.registerUser({
+      email: this.state.email
+    });
+  },
   render: template
 });

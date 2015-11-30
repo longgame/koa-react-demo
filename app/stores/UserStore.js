@@ -20,12 +20,11 @@ module.exports = Reflux.createStore({
     }
     return this.user;
   },
-  onRefreshCurrentUser: function(params) {
+  onRefreshUser: function(params) {
   },
-  onRegisterNewUser: function(params) {
+  onRegisterUser: function(params) {
   },
   onLoginUser: function(params) {
-    // FIXME: AJAX post to log in user here
   },
   onLogoutUser: function(params) {
   },

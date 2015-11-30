@@ -15,7 +15,14 @@
   </div>
 
   <button
-    class='submit'
+    class='register'
+    onClick='{ this.handleRegister }'
+  >
+    Register
+  </button>
+
+  <button
+    class='login'
     type='submit'
     onClick='{ this.handleSubmit }'
   >
