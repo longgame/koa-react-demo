@@ -6,16 +6,16 @@
   .view {
     display: inline;
 
-    .label {
+    .item-label {
       display: inline;
     }
 
-    .control {
+    .item-controls {
       display: none;
     }
   }
 
-  .view:hover .control {
+  .view:hover .item-controls {
     display: inline;
   }
 

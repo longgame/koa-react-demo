@@ -4,26 +4,24 @@
     class='view'
   >
     <div
-      class='label'
+      class='item-label'
       onClick="{ this.handleToggle }"
     >
       { this.props.label }
     </div>
 
-    <div class='control'>
+    <div class='item-controls'>
       <button
-        class='edit-item'
+        class='edit-button'
         onClick={this.handleEditStart}
       ><img
-        className='edit-button'
         src='/assets/pencil.png'
       /></button>
               
       <button
-        class='delete-item'
+        class='delete-button'
         onClick={this.handleDelete}
       ><img
-        className='image'
         src='/assets/trash.png'
       /></button>
     </div>
@@ -40,9 +38,8 @@
     />
   </div>
 
-  <div
+  <div class='checkmark'
     rt-class="{
-      'checkmark': true,
       'hidden': !this.props.isComplete,
     }"
   >

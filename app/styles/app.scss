@@ -6,6 +6,10 @@
   font-family: "Comic Sans MS", cursive, sans-serif;
   font-size: 16px;
 
+  label {
+    display: inline;
+  }
+
   input {
     font-family: "Comic Sans MS", cursive, sans-serif;
     font-style: italic;
@@ -30,16 +34,18 @@
   #app-header {
     background-color: #ed1141;
     padding: 10px;
+    margin: 0;
 
     ul {
       list-style: none;
-      margin: 0;
       padding: 0;
+      margin: 0;
     }
 
     li {
       display: inline;
-      padding: 10px;
+      padding: 16px;
+      margin: 0;
     }
 
     a {

@@ -7,10 +7,13 @@
   width: 460px;
 
   #todo-header {
+    padding: 10px;
+    margin: 0;
   }
 
   #todo-body {
     padding: 10px;
+    margin: 0;
 
     ul {
     }
@@ -24,13 +27,19 @@
     img {
       height: 20px;
     }
+
+    #toggle-all {
+      color: red;
+      float: right;
+    }
   }
 
   #todo-footer {
-    text-align: center;
     padding: 10px;
+    margin: 0;
 
     ul {
+      text-align: center;
       list-style: none;
       margin: 0;
       padding: 0;

@@ -48,7 +48,6 @@ module.exports = Reflux.createStore({
     }, this.list]);
     this.list = list;
     this.refresh();
-    
   },
   onRemoveItem: function(itemKey) {
     var list = _.filter(this.list, function(item) {
@@ -66,7 +65,6 @@ module.exports = Reflux.createStore({
   },
   onToggleAllItems: function() {
     var unchecked = _.where(this.list, { isComplete: false });
-    console.log(unchecked);
     if (unchecked.length == 0) {
       _.each(this.list, function(item) {
         item.isComplete = false;
