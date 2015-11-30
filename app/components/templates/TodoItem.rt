@@ -34,9 +34,7 @@
     class='view'
   >
     <input
-      rt-class="{
-        'edit': true,
-      }"
+      class='edit'
       valueLink="{ this.linkState('editValue') }"
       onKeyUp="{ this.handleValueChange }"
     />

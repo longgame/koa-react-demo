@@ -1,0 +1,24 @@
+<div id='login-form'>
+  <div class='email-form'>
+    <label>Email: </label>
+    <input
+      valueLink="{ this.linkState('email') }"
+    />
+  </div>
+
+  <div class='password-form'>
+    <label>Password: </label>
+    <input
+      type='password'
+      valueLink="{ this.linkState('password') }"
+    />
+  </div>
+
+  <button
+    class='submit'
+    type='submit'
+    onClick='{ this.handleSubmit }'
+  >
+    Login
+  </button>
+</div>
