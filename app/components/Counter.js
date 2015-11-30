@@ -6,7 +6,7 @@ require('react-bootstrap');
 import React from 'react';
 import { Button } from 'react-bootstrap';
 
-const Counter = React.createClass({
+module.exports = React.createClass({
   getInitialState: function() {
     return {
       presscount: 0,
@@ -30,5 +30,3 @@ const Counter = React.createClass({
     );
   }
 });
-
-module.exports = Counter;

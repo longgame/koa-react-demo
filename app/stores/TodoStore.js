@@ -8,11 +8,10 @@ var TodoActions = require('../actions/TodoActions');
 var todoCounter = 0,
     localStorageKey = 'todos';
 
-var TodoStore = Reflux.createStore({
+module.exports = Reflux.createStore({
   listenables: [TodoActions],
   init: function() {
     var loadedList = localStorage.getItem(localStorageKey);
-    var loadedList;
     if (!loadedList) {
       // No list is in localStorage.  Create a new one.
       this.list = [{
@@ -49,7 +48,6 @@ var TodoStore = Reflux.createStore({
     }, this.list]);
     this.list = list;
     this.refresh();
-    
   },
   onRemoveItem: function(itemKey) {
     var list = _.filter(this.list, function(item) {
@@ -67,7 +65,6 @@ var TodoStore = Reflux.createStore({
   },
   onToggleAllItems: function() {
     var unchecked = _.where(this.list, { isComplete: false });
-    console.log(unchecked);
     if (unchecked.length == 0) {
       _.each(this.list, function(item) {
         item.isComplete = false;
@@ -85,5 +82,3 @@ var TodoStore = Reflux.createStore({
     this.refresh();
   },
 });
-
-module.exports = TodoStore;

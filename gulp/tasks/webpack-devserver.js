@@ -15,7 +15,7 @@ gulp.task('webpack-devserver', function(cb) {
   );
 
   new devServer(webpack(webpackConfig), {
-    contentBase: helpers.appdir('src/views'),
+    contentBase: helpers.appdir('public'),
     hot: true,
   }).listen(9000, 'localhost', function(err, data) {
     if (err) throw new Error(err.message);

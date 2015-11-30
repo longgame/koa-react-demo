@@ -1,0 +1,67 @@
+#app {
+  @import 'about';
+  @import 'todo-list';
+
+  background-color: #fff;
+  font-family: "Comic Sans MS", cursive, sans-serif;
+  font-size: 16px;
+
+  label {
+    display: inline;
+  }
+
+  input {
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    font-style: italic;
+    font-size: 16px;
+    line-height: 40px;
+    outline: none;
+    border: 0px;
+    width: 400px;
+  }
+
+  button {
+    background-color: Transparent;
+    color: #f80;
+    border: none;
+    cursor: pointer;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    font-size: 20px;
+    overflow: hidden;
+    outline: none;
+  }
+
+  #app-header {
+    background-color: #ed1141;
+    padding: 10px;
+    margin: 0;
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    li {
+      display: inline;
+      padding: 16px;
+      margin: 0;
+    }
+
+    a {
+      color: #afed11;
+      text-decoration: none;
+      font-size: 24px;
+    }
+
+    a:hover {
+      color: #11edbd;
+      text-decoration: none;
+      font-size: 24px;
+    }
+  }
+
+  #app-body {
+    padding: 10px;
+  }
+}

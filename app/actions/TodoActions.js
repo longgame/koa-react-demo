@@ -2,7 +2,7 @@
 
 var Reflux = require('reflux');
 
-var TodoActions = Reflux.createActions([
+module.exports = Reflux.createActions([
   'toggleItem',
   'toggleAllItems',
   'addItem',
@@ -10,5 +10,3 @@ var TodoActions = Reflux.createActions([
   'clearCompleted',
   'editItem',
 ]);
-
-module.exports = TodoActions;
