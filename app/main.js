@@ -8,7 +8,7 @@ import Counter from './components/Counter';
 import TodoList from './components/TodoList';
 import About from './components/About';
 import Navbar from './components/Navbar';
-import LoginForm from './components/LoginForm';
+import { LoginForm } from './components/Forms';
 
 class App extends React.Component {
   render() {
@@ -31,10 +31,9 @@ var routes = (
   <Router>
     <Route component={App}>
       <Route path='/' component={TodoList} />
-        <Route path='/all' component={TodoList} />
-        <Route path='/active' component={TodoList} />
-        <Route path='/complete' component={TodoList} />
-      />
+      <Route path='/all' component={TodoList} />
+      <Route path='/active' component={TodoList} />
+      <Route path='/complete' component={TodoList} />
       <Route path='/about' component={About} />
       <Route path='/login' component={LoginForm} />
     </Route>

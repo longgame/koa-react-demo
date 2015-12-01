@@ -10,9 +10,9 @@ import Reflux from 'reflux';
 import TodoStore from '../stores/TodoStore';
 import TodoActions from '../actions/TodoActions';
 
-import template from './templates/TodoList.rt';
+import template from './TodoList.rt';
 
-module.exports = React.createClass({
+var TodoList = React.createClass({
   mixins: [ Reflux.connect(TodoStore, 'list') ],
   getInitialState: function() {
     return {
@@ -36,3 +36,7 @@ module.exports = React.createClass({
   },
   render: template
 });
+
+export default TodoList;
+export { TodoActions };
+export { TodoStore };

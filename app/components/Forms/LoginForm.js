@@ -4,10 +4,9 @@ import React, { Component } from 'react';
 import { LinkedStateMixin } from 'react-addons';
 import Reflux from 'reflux';
 
-import UserStore from '../stores/UserStore';
-import UserActions from '../actions/UserActions';
+import { UserStore, UserActions } from '../Forms';
 
-import template from './templates/LoginForm.rt';
+import template from './LoginForm.rt';
 
 module.exports = React.createClass({
   mixins: [ LinkedStateMixin ],

@@ -3,9 +3,9 @@
 import React, { Component } from 'react';
 import { LinkedStateMixin } from 'react-addons';
 
-import TodoActions from '../actions/TodoActions';
+import { TodoActions } from '../TodoList';
 
-import template from './templates/NewTodo.rt';
+import template from './NewTodo.rt';
 
 module.exports = React.createClass({
   handleToggleAll: function(event) {

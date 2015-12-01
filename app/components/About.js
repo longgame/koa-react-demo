@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 
-import template from './templates/About.rt';
+import template from './About.rt';
 
 module.exports = React.createClass({
   render: template

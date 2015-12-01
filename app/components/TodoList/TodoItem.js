@@ -3,12 +3,12 @@
 import React, { Component } from 'react';
 import { LinkedStateMixin } from 'react-addons';
 
-import TodoActions from '../actions/TodoActions';
+import { TodoActions } from '../TodoList';
 
-import template from './templates/TodoItem.rt';
+import template from './TodoItem.rt';
 
-import '../assets/pencil.png';
-import '../assets/trash.png';
+import './pencil.png';
+import './trash.png';
 
 module.exports = React.createClass({
   mixins: [ LinkedStateMixin ],

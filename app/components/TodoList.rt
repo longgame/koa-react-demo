@@ -1,6 +1,6 @@
-<rt-require dependency='../TodoItem' as='Todo' />
-<rt-require dependency='../NewTodo' as='NewTodo' />
-<rt-require dependency='../NavTodo' as='NavTodo' />
+<rt-require dependency='./TodoList/TodoItem' as='Todo' />
+<rt-require dependency='./TodoList/NewTodo' as='NewTodo' />
+<rt-require dependency='./TodoList/NavTodo' as='NavTodo' />
 
 <div id='todo-list'>
   <header id='todo-header'>
