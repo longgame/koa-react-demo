@@ -7,7 +7,7 @@ var gulp = require('gulp'),
 var config = require('../config'),
     helpers = require('../helpers');
 
-gulp.task('webpack-devserver', function(cb) {
+gulp.task('webpack-devserver', function() {
   var webpackConfig = require(helpers.appdir('webpack.config.js'))
   webpackConfig.entry.app.unshift(
     "webpack-dev-server/client?http://localhost:9000",
@@ -17,9 +17,13 @@ gulp.task('webpack-devserver', function(cb) {
   new devServer(webpack(webpackConfig), {
     contentBase: helpers.appdir('public'),
     hot: true,
+    proxy: {
+      '*': 'http://localhost:3000'
+    }
   }).listen(9000, 'localhost', function(err, data) {
-    if (err) throw new Error(err.message);
-    console.log("[webpack-dev-server] "+data);
-    cb();
+    if (err) {
+      throw new Error(err.message);
+    }
+    console.log("Listening on http://localhost:9000");
   });
 });

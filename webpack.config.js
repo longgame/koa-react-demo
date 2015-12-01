@@ -45,6 +45,7 @@ module.exports = {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
+    //new webpack.NoErrorsPlugin(),
   ],
   devServer: {
     host: 'localhost',
