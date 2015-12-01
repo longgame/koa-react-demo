@@ -6,7 +6,7 @@ import Reflux from 'reflux';
 
 import { UserStore, UserActions } from '../Forms';
 
-import template from './LoginForm.rt';
+import template from './RegistrationForm.rt';
 
 module.exports = React.createClass({
   mixins: [ LinkedStateMixin ],
@@ -18,13 +18,15 @@ module.exports = React.createClass({
     };
   },
   handleSubmit: function(event) {
-    UserActions.loginUser({
+    /* FIXME: Check credentials first
+    UserActions.registerNewUser({
       email: this.state.email,
       password: this.state.password
     });
+  /**/
   },
-  handleRegister: function(event) {
-    // FIXME: Redirect user to registration form
+  handleCancel: function(event) {
+    // FIXME: Go back
   },
   render: template
 });

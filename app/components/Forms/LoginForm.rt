@@ -1,4 +1,4 @@
-<div id='login-form'>
+<form id='login-form'>
   <div class='email-form'>
     <label>Email: </label>
     <input
@@ -15,17 +15,17 @@
   </div>
 
   <button
-    class='register'
-    onClick='{ this.handleRegister }'
-  >
-    Register
-  </button>
-
-  <button
     class='login'
     type='submit'
     onClick='{ this.handleSubmit }'
   >
     Login
   </button>
-</div>
+
+  <button
+    class='register'
+    onClick='{ this.handleRegister }'
+  >
+    Register
+  </button>
+</form>

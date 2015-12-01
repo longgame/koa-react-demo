@@ -1,8 +1,5 @@
-import UserStore from '../stores/UserStore';
-export { UserStore };
+exports.UserStore = require('../stores/UserStore');
+exports.UserActions = require('../actions/UserActions');
 
-import UserActions from '../actions/UserActions';
-export { UserActions };
-
-import LoginForm from './Forms/LoginForm';
-export { LoginForm };
+exports.LoginForm = require('./Forms/LoginForm');
+exports.RegistrationForm = require('./Forms/RegistrationForm');
