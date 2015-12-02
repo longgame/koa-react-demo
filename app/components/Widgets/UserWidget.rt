@@ -1,0 +1,13 @@
+<div id='user-widget' class='dropdown'>
+  <button
+    class='btn btn-primary dropdown-toggle'
+    type='button'
+    data-toggle='dropdown'
+  >
+    Login
+  </button>
+  <ul class='dropdown-menu'>
+    <li>item 1</li>
+    <li>item 2</li>
+  </ul>
+</div>

@@ -6,6 +6,7 @@ import { LinkedStateMixin } from 'react-addons';
 import { TodoActions } from '../TodoList';
 
 import template from './TodoItem.rt';
+import styles from './TodoItem.scss';
 
 import './pencil.png';
 import './trash.png';

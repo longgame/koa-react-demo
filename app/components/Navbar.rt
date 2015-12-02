@@ -1,7 +1,30 @@
-<div>
-  <ul>
-    <li><a href='#'>Home</a></li>
-    <li><a href='#/about'>About</a></li>
-    <li><a href='#/login'>Login</a></li>
-  </ul>
-</div>
+<rt-require dependency='./Widgets/UserWidget' as='UserWidget' />
+<rt-require dependency='./Forms/LoginForm' as='LoginForm' />
+<rt-require dependency='./Forms/RegistrationForm' as='RegistrationForm' />
+
+<nav id='navbar' class='navbar'>
+  <div class='container'>
+    <ul class='nav navbar-nav navbar-left'>
+      <li>
+        <button
+          class='btn item'
+          onClick='() => this.history.pushState(null, "/")'
+        >
+          Home
+        </button>
+      </li>
+      <li>
+        <button
+          class='btn item'
+          onClick='() => this.history.pushState(null, "/about")'
+        >
+          About
+        </button>
+      </li>
+    </ul>
+
+    <ul class='nav navbar-nav navbar-right'>
+      <li><UserWidget class='item' /></li>
+    </ul>
+  </div>
+</nav>

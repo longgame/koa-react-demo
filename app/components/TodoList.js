@@ -11,6 +11,7 @@ import TodoStore from '../stores/TodoStore';
 import TodoActions from '../actions/TodoActions';
 
 import template from './TodoList.rt';
+import styles from './TodoList.scss';
 
 var TodoList = React.createClass({
   mixins: [ Reflux.connect(TodoStore, 'list') ],

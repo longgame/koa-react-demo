@@ -1,7 +1,4 @@
 #app {
-  @import 'about';
-  @import 'todo-list';
-
   background-color: #fff;
   font-family: "Comic Sans MS", cursive, sans-serif;
   font-size: 16px;
@@ -32,36 +29,12 @@
   }
 
   #app-header {
-    background-color: #ed1141;
-    padding: 10px;
-    margin: 0;
-
-    ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    li {
-      display: inline;
-      padding: 16px;
-      margin: 0;
-    }
-
-    a {
-      color: #afed11;
-      text-decoration: none;
-      font-size: 24px;
-    }
-
-    a:hover {
-      color: #11edbd;
-      text-decoration: none;
-      font-size: 24px;
-    }
   }
 
   #app-body {
     padding: 10px;
+  }
+
+  #app-footer {
   }
 }

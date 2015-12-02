@@ -2,6 +2,7 @@
 
 import React, { Component } from 'react';
 import { LinkedStateMixin } from 'react-addons';
+import { History } from 'react-router';
 import Reflux from 'reflux';
 
 import { UserStore, UserActions } from '../Forms';
@@ -9,7 +10,7 @@ import { UserStore, UserActions } from '../Forms';
 import template from './RegistrationForm.rt';
 
 module.exports = React.createClass({
-  mixins: [ LinkedStateMixin ],
+  mixins: [ History, LinkedStateMixin ],
   getInitialState: function() {
     return {
       user: {},
@@ -18,15 +19,15 @@ module.exports = React.createClass({
     };
   },
   handleSubmit: function(event) {
-    /* FIXME: Check credentials first
-    UserActions.registerNewUser({
+    // FIXME: Check for invalid credentials
+
+    UserActions.registerUser({
       email: this.state.email,
       password: this.state.password
     });
-  /**/
   },
   handleCancel: function(event) {
-    // FIXME: Go back
+    this.history.goBack();
   },
   render: template
 });

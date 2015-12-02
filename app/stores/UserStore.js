@@ -23,8 +23,10 @@ module.exports = Reflux.createStore({
   onRefreshUser: function(params) {
   },
   onRegisterUser: function(params) {
+    this.trigger('JZA');
   },
   onLoginUser: function(params) {
+    this.trigger('RZA');
   },
   onLogoutUser: function(params) {
   },
