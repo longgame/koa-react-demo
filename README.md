@@ -1,6 +1,6 @@
-# Koa Boilerplate
+# Koa React Demo
 
-Quickly bootstrap a KoaJS application.
+Demonstrates a KoaJS backend and React frontend.
 
 ## Setup
 
